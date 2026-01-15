@@ -10,7 +10,7 @@ defmodule Appduct.Application do
     children = [
       # Starts a worker by calling: Appduct.Worker.start_link(arg)
       # {Appduct.Worker, arg}
-      {Bandit, plug: Appduct.Router, scheme: :http, ip: {127, 0, 0, 1}, port: 4001},
+      {Bandit, plug: Appduct.Router, scheme: :http, ip: Application.get_env(:appduct, :server_if), port: Application.get_env(:appduct, :server_port)},
       Appduct.Writer.Reaction,
       Appduct.Db.Cubdb,
       Appduct.Db.Countdb
