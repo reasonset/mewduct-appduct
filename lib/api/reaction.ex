@@ -18,7 +18,9 @@ defmodule Appduct.Api.Reaction do
         "user_id" => user_id,
         "media_id" => media_id,
         "reaction" => reaction_type,
-        "negative" => is_negative
+        "negative" => is_negative,
+        "ip_addr" => Enum.join(Tuple.to_list(conn.remote_ip), "."),
+        "headers" => Enum.into(conn.req_headers, %{})
       }
 
       write_reaction(reaction_params, conn.remote_ip)

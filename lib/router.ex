@@ -12,10 +12,6 @@ defmodule Appduct.Router do
 
   plug(RemoteIp)
 
-  get "/" do
-    send_resp(conn, 200, "Hello, World")
-  end
-
   post "/reaction/plusone" do
     Appduct.Api.Reaction.reaction(conn)
   end
